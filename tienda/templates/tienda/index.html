@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Hola a todos! es la pagina de una tienda!!!.
-</body>
-</html>
+{% extends "tienda/base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h2>Bienvenido</h2>
+<p>Este sistema permite gestionar departamentos, empleados y productos.</p>
+<p>Usa el menú superior para comenzar.</p>
+{% endblock %}

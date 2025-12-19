@@ -8,4 +8,25 @@ class Departamento(models.Model):
     email_dpto = models.EmailField()
 
     def __str__(self):
-        return f"Nombre: {self.nombre} / Nro_dpto: {self.nro_departamento}"
+        return self.nombre
+
+
+class Empleado(models.Model):
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}"
+
+
+class Producto(models.Model):
+    nombre = models.CharField(max_length=50)
+    precio = models.FloatField()
+    departamento = models.ForeignKey(
+        Departamento,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.nombre

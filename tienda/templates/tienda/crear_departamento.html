@@ -1,0 +1,13 @@
+{% extends "tienda/base.html" %}
+
+{% block title %}Crear departamento{% endblock %}
+
+{% block content %}
+<h2>Crear departamento</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar departamento</button>
+</form>
+{% endblock %}
