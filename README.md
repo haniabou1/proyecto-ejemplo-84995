@@ -112,6 +112,13 @@ Desde el **admin de Django** se pueden:
 
 ---
 
+## Video demostración
+
+Link al video mostrando el funcionamiento del proyecto:  
+https://drive.google.com/file/d/1JtF4P-1ffiUVMZIfd2cfadUvYiNCxrG5/view?usp=sharing
+
+---
+
 ## Autor
 
 **Hani Abou Saada**  
