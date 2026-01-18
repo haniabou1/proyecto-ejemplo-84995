@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Walmart Clone{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'pages/style.css' %}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">Walmart</h1>
+            <nav>
+                <a href="/">Inicio</a>
+                <a href="/productos/">Productos</a>
+                <a href="/contacto/">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Walmart Clone - Proyecto Final</p>
+    </footer>
+
+</body>
+</html>

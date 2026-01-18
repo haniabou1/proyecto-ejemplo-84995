@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TP3_HaniAbousaada.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Proyecto_Final_Abousaada.settings')
 
 application = get_asgi_application()

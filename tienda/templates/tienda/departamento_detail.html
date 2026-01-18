@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Detalle del Departamento</h2>
+
+<p><b>Nombre:</b> {{ departamento.nombre }}</p>
+<p><b>Descripción:</b> {{ departamento.descripcion }}</p>
+<p><b>Número:</b> {{ departamento.nro_departamento }}</p>
+<p><b>Email:</b> {{ departamento.email_dpto }}</p>
+<p><b>N° empleados:</b> {{ departamento.nro_empleados }}</p>
+<p><b>Fecha creación:</b> {{ departamento.fecha_de_creacion }}</p>
+
+{% if departamento.imagen %}
+  <p>
+    <img src="{{ departamento.imagen.url }}" alt="Imagen" width="200">
+  </p>
+{% endif %}
+
+<p>
+  <a href="{% url 'departamento_list' %}">Volver al listado</a>
+  {% if user.is_authenticated %}
+    | <a href="{% url 'departamento_update' departamento.pk %}">Editar</a>
+    | <a href="{% url 'departamento_delete' departamento.pk %}">Borrar</a>
+  {% endif %}
+</p>
+
+{% endblock %}

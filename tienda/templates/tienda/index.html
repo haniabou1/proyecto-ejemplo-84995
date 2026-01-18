@@ -1,9 +1,37 @@
-{% extends "tienda/base.html" %}
+{% extends "base.html" %}
 
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-<h2>Bienvenido</h2>
-<p>Este sistema permite gestionar departamentos, empleados y productos.</p>
-<p>Usa el menú superior para comenzar.</p>
+  <h2>Bienvenido a nuestra Tienda de Walmart</h2>
+
+  <p>
+    En nuestra tienda encontrarás todo lo que necesitas en un solo lugar.
+    Ofrecemos una amplia variedad de productos organizados por departamentos
+    para facilitar tu experiencia de compra.
+  </p>
+
+  <p>
+    Explora nuestras secciones, conoce quiénes somos y revisa nuestras
+    políticas de envíos, cambios y devoluciones.
+  </p>
+
+  <h3>Información</h3>
+
+  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+    {% for p in paginas_inicio %}
+      <a href="/{{ p.slug }}/"
+         style="
+           padding:10px 14px;
+           background:#e5e5e5;
+           border:1px solid #bbb;
+           border-radius:4px;
+           text-decoration:none;
+           font-weight:bold;
+           color:#111;
+         ">
+        {{ p }}
+      </a>
+    {% endfor %}
+  </div>
 {% endblock %}

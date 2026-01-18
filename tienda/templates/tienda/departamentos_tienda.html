@@ -1,26 +1,49 @@
-{% extends "tienda/base.html" %}
+{% extends "base.html" %}
 
 {% block title %}Buscar departamento{% endblock %}
 
 {% block content %}
-<h2>Buscar departamento</h2>
+  <h2>Buscar departamento</h2>
 
-<form method="get">
-    <input type="text" name="nombre" placeholder="Nombre del departamento">
+  <form method="get" action="">
+    <label for="id_nombre"><b>Nombre del departamento</b></label>
+    <input
+      type="text"
+      id="id_nombre"
+      name="nombre"
+      placeholder="Ej: Electrónica, Hogar, Ropa..."
+      value="{{ q }}"
+    >
     <br><br>
     <button type="submit">Buscar</button>
-</form>
+  </form>
 
-{% if resultado %}
-    <h3>Resultados</h3>
-    <ul>
-        {% for departamento in resultado %}
-            <li>
-                <strong>{{ departamento.nombre }}</strong><br>
-                N°: {{ departamento.nro_departamento }}<br>
-                Email: {{ departamento.email_dpto }}
-            </li>
+  <hr>
+
+  {% if q %}
+    {% if resultado %}
+      <h3>Resultados para: "{{ q }}"</h3>
+
+      <ul>
+        {% for d in resultado %}
+          <li>
+            <a href="{% url 'departamento_detail' d.pk %}">
+              <b>{{ d.nombre }}</b>
+            </a>
+            {% if d.nro_departamento %}
+              (N° {{ d.nro_departamento }})
+            {% endif %}
+          </li>
         {% endfor %}
-    </ul>
-{% endif %}
+      </ul>
+
+      <p><small>Haz clic en un departamento para ver el detalle.</small></p>
+
+    {% else %}
+      <p><b>No se encontraron departamentos</b> para "{{ q }}".</p>
+    {% endif %}
+  {% else %}
+    <p>Escribe un nombre y presiona <b>Buscar</b>.</p>
+  {% endif %}
+
 {% endblock %}

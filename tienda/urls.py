@@ -1,16 +1,23 @@
 from django.urls import path
+
 from .views import (
     home,
-    crear_departamento,
-    crear_empleado,
-    crear_producto,
     buscar_departamento,
+    DepartamentoListView,
+    DepartamentoDetailView,
+    DepartamentoCreateView,
+    DepartamentoUpdateView,
+    DepartamentoDeleteView,
 )
 
 urlpatterns = [
     path("", home, name="home"),
-    path("crear-departamento/", crear_departamento, name="crear_departamento"),
-    path("crear-empleado/", crear_empleado, name="crear_empleado"),
-    path("crear-producto/", crear_producto, name="crear_producto"),
+
+    path("departamentos/", DepartamentoListView.as_view(), name="departamento_list"),
+    path("departamentos/<int:pk>/", DepartamentoDetailView.as_view(), name="departamento_detail"),
+    path("departamentos/crear/", DepartamentoCreateView.as_view(), name="departamento_create"),
+    path("departamentos/<int:pk>/editar/", DepartamentoUpdateView.as_view(), name="departamento_update"),
+    path("departamentos/<int:pk>/borrar/", DepartamentoDeleteView.as_view(), name="departamento_delete"),
+
     path("buscar-departamento/", buscar_departamento, name="buscar_departamento"),
 ]

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+<h2 class="section-title">Nuestras secciones</h2>
+
+<div class="card-grid">
+    {% for page in object_list %}
+        <div class="card">
+            <h3>{{ page.titulo }}</h3>
+
+            <div class="card-text">
+                {{ page.contenido|safe|truncatewords_html:20 }}
+            </div>
+
+            <a class="btn" href="{% url 'page_detail' page.slug %}">Ver más</a>
+        </div>
+    {% empty %}
+        <p>No hay páginas aún</p>
+    {% endfor %}
+</div>

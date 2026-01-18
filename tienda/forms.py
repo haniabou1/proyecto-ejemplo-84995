@@ -7,15 +7,19 @@ class DepartamentoForm(forms.ModelForm):
         model = Departamento
         fields = [
             "nombre",
+            "descripcion",
             "nro_departamento",
             "email_dpto",
             "nro_empleados",
+            "imagen",
         ]
         labels = {
             "nombre": "Nombre del departamento",
+            "descripcion": "Descripción",
             "nro_departamento": "Número de departamento",
             "email_dpto": "Email del departamento",
             "nro_empleados": "Cantidad de empleados",
+            "imagen": "Imagen",
         }
 
 
@@ -49,4 +53,3 @@ class ProductoForm(forms.ModelForm):
             "precio": "Precio",
             "departamento": "Departamento",
         }
-

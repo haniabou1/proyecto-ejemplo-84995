@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Departamentos</h2>
+
+<form method="get" action="" style="margin-bottom: 12px;">
+  <input type="text" name="q" placeholder="Buscar por nombre/descripcion/nro..."
+         value="{{ request.GET.q|default:'' }}">
+  <button type="submit">Buscar</button>
+  {% if request.GET.q %}
+    <a href="{% url 'departamento_list' %}">Limpiar</a>
+  {% endif %}
+</form>
+
+{% if user.is_authenticated %}
+  <p>
+    <a href="{% url 'departamento_create' %}">+ Crear departamento</a>
+  </p>
+{% else %}
+  <p><i>Inicia sesión para crear/editar/borrar departamentos.</i></p>
+{% endif %}
+
+{% if departamentos %}
+  <ul>
+    {% for d in departamentos %}
+      <li style="margin-bottom: 12px;">
+        <b>{{ d.nombre }}</b> (N° {{ d.nro_departamento }})<br>
+        {{ d.descripcion }}<br>
+
+        {% if d.imagen %}
+          <img src="{{ d.imagen.url }}" alt="Imagen" width="120">
+          <br>
+        {% endif %}
+
+        <a href="{% url 'departamento_detail' d.pk %}">Ver detalle</a>
+
+        {% if user.is_authenticated %}
+          | <a href="{% url 'departamento_update' d.pk %}">Editar</a>
+          | <a href="{% url 'departamento_delete' d.pk %}">Borrar</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+{% else %}
+  {% if request.GET.q %}
+    <p><b>No hay resultados</b> para “{{ request.GET.q }}”.</p>
+  {% else %}
+    <p><b>No hay departamentos</b> cargados aún.</p>
+  {% endif %}
+{% endif %}
+
+{% endblock %}

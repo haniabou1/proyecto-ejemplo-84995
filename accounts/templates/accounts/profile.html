@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Perfil</h2>
+
+<p><b>Usuario:</b> {{ request.user.username }}</p>
+<p><b>Nombre:</b> {{ request.user.first_name }}</p>
+<p><b>Apellido:</b> {{ request.user.last_name }}</p>
+<p><b>Email:</b> {{ request.user.email }}</p>
+
+{% if request.user.profile.avatar %}
+  <img src="{{ request.user.profile.avatar.url }}" width="120" alt="Avatar">
+{% endif %}
+
+<p><b>Bio:</b> {{ request.user.profile.bio }}</p>
+
+<p>
+  <a href="{% url 'profile_edit' %}">Editar perfil</a> |
+  <a href="{% url 'password_change' %}">Cambiar contraseña</a> |
+
+  <form method="post" action="{% url 'logout' %}" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" style="
+      background:none;
+      border:none;
+      padding:0;
+      margin:0;
+      color:#0000EE;
+      text-decoration:underline;
+      cursor:pointer;
+      font:inherit;
+    ">
+      Logout
+    </button>
+  </form>
+</p>
+{% endblock %}

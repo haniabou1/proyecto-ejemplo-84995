@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if object %}
+    <h2>Editar Departamento</h2>
+  {% else %}
+    <h2>Crear Departamento</h2>
+  {% endif %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+
+  <p>
+    <a href="{% url 'departamento_list' %}">Volver al listado</a>
+  </p>
+{% endblock %}
